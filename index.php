@@ -7,7 +7,7 @@
 	<body>
 		<div class="centering">
 			<h1>Welcome to Official Liverpool FC Store!</h1>
-			<form method="post" action="index.html">
+			<form method="post" action="index.php">
 				<input placeholder="Search" name="search">
 				<input type="submit" value="Search">
 			</form>
