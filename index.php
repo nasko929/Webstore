@@ -15,7 +15,7 @@
 		<?php
 			if(strlen($_POST['search']) != 2)
 			{
-				echo '<br>'.$_POST['search'];
+				echo '<br>Searching for: '.$_POST['search'];
 			}
 		?>
 	</body>
