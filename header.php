@@ -1,7 +1,0 @@
-<html>
-	<head>
-		<link rel="stylesheet" href="default.css">
-		<meta charset="utf-8">
-		<title><?php echo $title?></title>
-	</head>
-	<body>

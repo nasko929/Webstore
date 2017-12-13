@@ -1,9 +1,10 @@
 <?php
+	session_start();
 	$title =  "Adding new product";
-	require("header.php");
+	require("header_footer/header.php");
 ?>
 
-<form method="post" action="index.php">
+<form method="post" action=<?php echo $index_path; ?> >
 	<label>Name:</label><input type="text" name="name"><br>
 	<label>Description: </label><input type="textarea" name="description"><br>
 	<input type="hidden" name="welldone" value="1">
@@ -14,5 +15,5 @@
 </form>
 
 <?php
-	require("footer.php");
+	require($footer_path);
 ?>

@@ -1,24 +1,26 @@
 <?php
-	session_start();
-	$con=mysqli_connect('127.0.0.1','nasko','yJ9i8PpGRync0ud5','webstore');
-	if(!$con)
-		echo 'Fuck you, man!<br>';
 	$title="Liverpool FC - WebStore. Lowest prices!!!";
-	require("header.php");
+	require("header_footer/header.php");
 ?>
-
-<?php
-	if(isset($_SESSION['is_logged']))
-	{
-		echo 'Hello, Person!';
-	}
-	else
-	{
-		echo 'Would you like to register?';
-	}
-?>
+<div style="text-align: right">
+	<?php
+		if(isset($_SESSION['is_logged']))
+		{
+			if(isset($_SESSION['username']))
+				echo 'Hello, '.$_SESSION['username'].'!';
+			echo '<br><a href="'.$logout_path.'">Logout</a>';
+		}
+		else
+		{
+			echo '<a href="'.$login_path.'">Login</a><br>';
+			echo '<a href="'.$register_path.'">Would you like to register?</a>';
+		}
+	?>
+</div>
 <div class="centering">
-	<h1>Welcome to Official Liverpool FC Store!</h1>
+	<font face="georgia">
+		<h1>Welcome to Official Liverpool FC Store!</h1>
+	</font>
 	<form method="get" action="index.php">
 		<input placeholder="Search" list="options" name="search">
 		<datalist id="options">
@@ -30,7 +32,9 @@
 	</form>
 </div>
 <div class="centering">
-	<a href="add.php">Add</a>
+	<?php
+		echo '<a href="'.$add_product_path.'">Add</a>';
+	?>
 </div>
 <?php
 	if(isset($_POST['welldone']))
@@ -61,5 +65,5 @@
 ?>
 
 <?php
-	require("footer.php");
+	require($footer_path);
 ?>
