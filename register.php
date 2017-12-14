@@ -14,6 +14,7 @@
 		<input placeholder="Last Name" type="text" name="lname"><br><br>
 		<input type="submit" value="Register">
 	</form>
+	<a href=<?php echo $index_path; ?> >Back</a>
 </div>
 
 <?php

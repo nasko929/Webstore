@@ -1,8 +1,8 @@
 <?php
-	$title="Liverpool FC - WebStore. Lowest prices!!!";
+	$title = "Liverpool FC - WebStore. Lowest prices!!!";
 	require("header_footer/header.php");
 ?>
-<div style="text-align: right">
+<div style = "text-align: right">
 	<?php
 		if(isset($_SESSION['is_logged']))
 		{
@@ -39,13 +39,13 @@
 <?php
 	if(isset($_POST['welldone']))
 	{
-		$name=$_POST['name'];
-		$description=$_POST['description'];
-		$price=$_POST['price'];
-		$quantity=$_POST['quantity'];
-		$pictureurl=$_POST['pictureurl'];
+		$name = $_POST['name'];
+		$description = $_POST['description'];
+		$price = $_POST['price'];
+		$quantity = $_POST['quantity'];
+		$pictureurl = $_POST['pictureurl'];
 		$query = "INSERT INTO products ( name, description, price, quantity, picture_url) VALUES ('".$name."', '".$description."', '".$price."', '".$quantity."', '".$pictureurl."') ";
-		if(mysqli_query($con,$query)==TRUE)
+		if(mysqli_query($con,$query) == TRUE)
 		{
 			echo "New record created successfully.<br>";
 		}
@@ -57,7 +57,7 @@
 	$result = mysqli_query($con,"SELECT * FROM products");
 	echo 'All products are:<br>';
 	echo '<center><table border=1><thead><th>Name</th><th>Description</th><th>Price</th></thead>';
-	while($row=mysqli_fetch_assoc($result))
+	while($row = mysqli_fetch_assoc($result))
 	{
 		echo '<tr><td><center>'.$row['name'].'</center></td><td><center>'.$row['description'].'</center></td><td><center>'.$row['price'].'$</center></td></tr>';
 	}
