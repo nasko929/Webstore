@@ -8,9 +8,10 @@
 	<form action="register.php" method="post">
 		<input placeholder="Username" type="text" name="username"><br><br>
 		<input placeholder="Password" type="password" name="pass"><br><br>
+		<input placeholder="Confirm Password" type="password"  name="pass_conf"><br><br>
 		<input placeholder="E-mail" type="text" name="email"><br><br>
 		<input placeholder="First Name" type="text" name="fname">
-		<input type="hidden" name="registered" value="1">
+		<input type="hidden" name="sent_registration_form" value="1">
 		<input placeholder="Last Name" type="text" name="lname"><br><br>
 		<input type="submit" value="Register">
 	</form>
@@ -18,17 +19,18 @@
 </div>
 
 <?php
-	if(isset($_POST['registered']))
+	if(isset($_POST['sent_registration_form']))
 	{
 		$password=trim($_POST['pass']);
+		$conf_password=trim($_POST['pass_conf']);
 		$password_len=strlen($password);
 		$password=password_hash($password, PASSWORD_DEFAULT);
 		$username=trim($_POST['username']);
 		$email=trim($_POST['email']);
 		$fname=trim($_POST['fname']);
 		$lname=trim($_POST['lname']);
-		include($reg_errors_path);
-		if(count($arr_errors)==0)
+		require($reg_errors_path);
+		if(count($arr_errors) == 0)
 		{
 			$query = "INSERT INTO users ( username, encrypted_password, first_name, last_name, email) VALUES ('".$username."', '".$password."', '".$fname."', '".$lname."', '".$email."') ";
 			if(mysqli_query($con,$query)==TRUE)
@@ -41,7 +43,7 @@
 			}
 			else
 			{
-				echo "Error: " .$query." => ". mysqli_error($con);
+				echo "Error: ".$query." => ". mysqli_error($con);
 			}
 		}
 		else

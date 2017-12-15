@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	$title = "Adding new product";
 	require("header_footer/header.php");
 ?>

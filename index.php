@@ -8,6 +8,9 @@
 		{
 			if(isset($_SESSION['username']))
 				echo 'Hello, '.$_SESSION['username'].'!';
+			require($check_admin_path);
+			if($curr_user_admin == 1)
+				echo '<br><a href="'.$admin_panel_path.'">Enter Admin Panel</a>';
 			echo '<br><a href="'.$logout_path.'">Logout</a>';
 		}
 		else
@@ -20,23 +23,35 @@
 <div class="centering">
 	<font face="georgia">
 		<h1>Welcome to Official Liverpool FC Store!</h1>
+		<h3>Select category/categories for the product you're looking for:</h6>
 	</font>
+	<?php
+		$query_list = "SELECT * FROM categories WHERE `categories`.`id` > 1";
+		$loc = mysqli_query($con,$query_list);
+	?>
 	<form method="get" action="index.php">
-		<input placeholder="Search" list="options" name="search">
-		<datalist id="options">
-			<option value="Clothes">
-			<option value="Souvenirs">
-			<option value="Accessories">
-		</datalist>
-		<input type="submit" value="Search">
+		<?php
+			echo '<select name="categories[]" multiple>';
+			while($row = mysqli_fetch_assoc($loc))
+			{
+				echo '<option value="'.$row['name'].'">'.$row['name'].'</option>';
+			}
+			?>
+			</select>
+			<br><br>
+			<input type="submit" value="Search">
 	</form>
 </div>
-<div class="centering">
-	<?php
-		echo '<a href="'.$add_product_path.'">Add</a>';
-	?>
-</div>
+
 <?php
+	
+	/*if(isset($_GET['categories']))
+	{
+		foreach($_GET['categories'] as $value)
+		{
+			echo $value.'<br>';
+		}
+	}*/
 	if(isset($_POST['welldone']))
 	{
 		$name = $_POST['name'];
@@ -55,7 +70,6 @@
 		}
 	}
 	$result = mysqli_query($con,"SELECT * FROM products");
-	echo 'All products are:<br>';
 	echo '<center><table border=1><thead><th>Name</th><th>Description</th><th>Price</th></thead>';
 	while($row = mysqli_fetch_assoc($result))
 	{

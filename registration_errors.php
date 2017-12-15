@@ -1,6 +1,10 @@
 <?php
 	require($user_data_config_path);
 	$arr_errors = [];
+	if($password != $conf_password)
+	{
+		$arr_errors[] = "Passwords don't match.";
+	}
 	if(strlen($username) < $min_username_len)
 	{
 		$arr_errors[] = "Username length must be at least ".$min_username_len." characters.";
