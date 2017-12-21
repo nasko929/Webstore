@@ -16,4 +16,7 @@
 	$add_category_path = "add_category.php";
 	$list_products_path = "list_products.php";
 	$delete_product_path = "delete_product.php";
+	$delete_category_path = "delete_category.php";
+	$change_category_path = "change_category.php";
+	$change_product_path = "change_product.php";
 ?>
