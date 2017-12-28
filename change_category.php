@@ -11,7 +11,7 @@
 <div class = "centering">
 	<h1>Change category</h1>
 	<form method = "post" action = <?php echo "change_category.php?chg_id=".$changed_category_id; ?> >
-		<input type = "text" placeholder = "Category Name" name = "cname" value = <?php echo $info['name']; ?> >
+		<input type = "text" placeholder = "Category Name" name = "cname" value = <?php echo '"'.$info['name'].'"'; ?> >
 		<input type = "hidden" name = "changed" value = "1">
 		<input type = "submit" value="Change">
 	</form>

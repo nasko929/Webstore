@@ -9,20 +9,18 @@
 		echo "Error => ".mysqli_error($con);
 	}
 	$info = mysqli_query($con,$get_info);
-	#echo '<pre>'.print_r($info,true).'</pre>';
 	$info = mysqli_fetch_assoc($info);
-	#echo '<pre>'.print_r($info,true).'</pre>';
 ?>
 
 <div class="centering">
 	<h1>Change product</h1>
 	<form method = "post" action = <?php echo "change_product.php?chg_id=".$changed_product_id; ?> >
-		<input placeholder="Name" type = "text" name = "name" value = <?php echo $info['name']; ?> ><br><br>
-		<textarea placeholder="Description"  name = "description"><?php echo $info['description']; ?></textarea><br><br>
+		<input placeholder="Name" type = "text" name = "name" value = <?php echo '"'.$info['name'].'"'; ?> ><br><br>
+		<input placeholder="Description"  name = "description" value = <?php echo '"'.$info['description'].'"'; ?> ><br><br>
 		<input type="hidden" name = "welldone" value = "1">
-		<input placeholder="Price" type = "text" name = "price" value = <?php echo $info['price']; ?> ><br><br>
-		<input placeholder="Quantity" type = "text" name = "quantity" value = <?php echo $info['quantity']; ?> ><br><br>
-		<input placeholder="PictureURL" type = "text" name = "pictureurl" value = <?php echo $info['picture_url']; ?> ><br>
+		<input placeholder="Price" type = "text" name = "price" value = <?php echo '"'.$info['price'].'"'; ?> ><br><br>
+		<input placeholder="Quantity" type = "text" name = "quantity" value = <?php echo '"'.$info['quantity'].'"'; ?> ><br><br>
+		<input placeholder="PictureURL" type = "text" name = "pictureurl" value = <?php echo '"'.$info['picture_url'].'"'; ?> ><br>
 		<?php
 			$query_list = "SELECT * FROM categories WHERE `categories`.`id` > 1";
 			$loc = mysqli_query($con,$query_list);
@@ -47,7 +45,7 @@
 		$price = $_POST['price'];
 		$quantity = $_POST['quantity'];
 		$pictureurl = $_POST['pictureurl'];
-		$query = "UPDATE products SET name = '".$name."' , price = '".$price."' , quantity = '".$quantity."',  picture_url = '".$picture_url."', description = '".$description."' WHERE id = ".$changed_product_id;
+		$query = "UPDATE products SET name = '".$name."' , price = '".$price."' , quantity = '".$quantity."',  picture_url = '".$pictureurl."', description = '".$description."' WHERE id = ".$changed_product_id;
 		echo $query.'<br>';
 		$curr_index = $changed_product_id;
 		$categories = $_POST['categories'];
