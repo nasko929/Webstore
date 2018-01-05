@@ -1,7 +1,7 @@
-html
+body
 {
-	background-image: url(pics/lfc.png);
-	background-size: cover;
+	background-image: url('lfc.png') ;
+	background-size: cover ;
 	color: #FFFFFF;
 }
 .centering {
