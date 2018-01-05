@@ -2,7 +2,6 @@
 	$index_path = "index.php";
 	$footer_path = "header_footer/footer.php";
 	$header_path = "header_footer/header.php";
-	$css_default_path = "default.css";
 	$add_product_path = "add_product.php";
 	$register_path = "register.php";
 	$paths_path = "paths/paths.php";
@@ -19,4 +18,12 @@
 	$delete_category_path = "delete_category.php";
 	$change_category_path = "change_category.php";
 	$change_product_path = "change_product.php";
+	$view_more_product_path = "view_more_product.php";
+	$my_profile_path = "my_profile.php";
+	$help_functions_path = "help_functions.php";
+	$constants_path = "constants.php";
+	#CSS
+	$css_default_path = "stylesheets/default.css";
+	#JS
+	$blinking_js_path = "scripts/blinking.js";
 ?>

@@ -11,6 +11,7 @@
 		<input placeholder="Password" type="password" name="password"><br><br>
 		<input type="submit" value="Login">
 	</form>
+	<a href=<?php echo $register_path; ?> >You don't have an account yet? Register!</a><br><br>
 	<a href=<?php echo $index_path; ?> >Back</a>
 </div>
 

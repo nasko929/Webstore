@@ -4,10 +4,12 @@
 ?>
 <div style = "text-align: right">
 	<?php
+		$my_profile_redirect = redirect_to_based_on_is_logged($my_profile_path,$login_path);
+		echo '<a href="'.$my_profile_redirect.'">My Profile</a>';
 		if(isset($_SESSION['is_logged']))
 		{
 			if(isset($_SESSION['username']))
-				echo 'Hello, '.$_SESSION['username'].'!';
+				echo '<br>Hello, '.$_SESSION['username'].'!';
 			require($check_admin_path);
 			if($curr_user_admin == 1)
 				echo '<br><a href="'.$admin_panel_path.'">Enter Admin Panel</a>';
@@ -15,7 +17,7 @@
 		}
 		else
 		{
-			echo '<a href="'.$login_path.'">Login</a><br>';
+			echo '<br><a href="'.$login_path.'">Login</a><br>';
 			echo '<a href="'.$register_path.'">Would you like to register?</a>';
 		}
 	?>
