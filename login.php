@@ -28,7 +28,7 @@
 			{
 				$_SESSION['username'] = $username;
 				$_SESSION['is_logged'] = 1;
-				$_SESSION['id'] = $current_user[0]['id'];
+				$_SESSION['id'] = $row['id'];
 				header("Location: ".$index_path);
 			}
 			else

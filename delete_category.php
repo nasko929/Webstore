@@ -11,7 +11,6 @@
 	else if($_GET['confirmation'])
 	{
 		$title = "Deleting category";
-		require("header_footer/header.php");
 		$squery = 'DELETE FROM categories WHERE `categories`.`id`='.$_GET['del_id'];
 		$fquery = 'DELETE FROM categories_products WHERE `categories_products`.`category_id`='.$_GET['del_id'];
 		if(!mysqli_query($con,$fquery))

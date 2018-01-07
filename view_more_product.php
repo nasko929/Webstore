@@ -14,7 +14,12 @@
 	<img src=<?php echo "pics/".$info['picture_url']; ?> style = "height: 200px; width: auto;" alt = <?php echo $info['name'].'-picture'; ?> ></img>
 	<h3><?php echo $info['description']; ?></h3>
 	<h2><?php echo $info['price']; ?>$</h2>
-	<h2><a href="#">BUY NOW</a></h2>
+	<?php
+		if($info['quantity'] != 0)
+			echo '<h2><a href="#">BUY NOW</a></h2>';
+		else
+			echo "<h2>Not in stock.</h2>";
+	?>
 	<h2>Categories:</h2>
 	<?php
 		$query_for_categories = "SELECT * FROM categories_products WHERE `categories_products`.`product_id`=".$item_id;
