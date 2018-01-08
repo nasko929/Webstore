@@ -4,15 +4,20 @@
 ?>
 <div style = "text-align: right">
 	<?php
+		$my_profile_redirect = redirect_to_based_on_is_logged($my_profile_path,$login_path);
+		echo '<a href="'.$my_profile_redirect.'">My Profile</a>';
 		if(isset($_SESSION['is_logged']))
 		{
 			if(isset($_SESSION['username']))
-				echo 'Hello, '.$_SESSION['username'].'!';
+				echo '<br>Hello, '.$_SESSION['username'].'!';
+			require($check_admin_path);
+			if($curr_user_admin == 1)
+				echo '<br><a href="'.$admin_panel_path.'">Enter Admin Panel</a>';
 			echo '<br><a href="'.$logout_path.'">Logout</a>';
 		}
 		else
 		{
-			echo '<a href="'.$login_path.'">Login</a><br>';
+			echo '<br><a href="'.$login_path.'">Login</a><br>';
 			echo '<a href="'.$register_path.'">Would you like to register?</a>';
 		}
 	?>
@@ -20,48 +25,34 @@
 <div class="centering">
 	<font face="georgia">
 		<h1>Welcome to Official Liverpool FC Store!</h1>
+		<h3>Select category/categories for the product you're looking for:</h6>
 	</font>
+	<?php
+		$query_list = "SELECT * FROM categories WHERE `categories`.`id` > 1";
+		$loc = mysqli_query($con,$query_list);
+	?>
 	<form method="get" action="index.php">
-		<input placeholder="Search" list="options" name="search">
-		<datalist id="options">
-			<option value="Clothes">
-			<option value="Souvenirs">
-			<option value="Accessories">
-		</datalist>
-		<input type="submit" value="Search">
+		<?php
+			echo '<select name="categories[]" multiple>';
+			while($row = mysqli_fetch_assoc($loc))
+			{
+				echo '<option value="'.$row['name'].'">'.$row['name'].'</option>';
+			}
+			?>
+			</select>
+			<br><br>
+			<input type = "submit" value = "Search">
 	</form>
 </div>
-<div class="centering">
-	<?php
-		echo '<a href="'.$add_product_path.'">Add</a>';
-	?>
-</div>
+
 <?php
-	if(isset($_POST['welldone']))
-	{
-		$name = $_POST['name'];
-		$description = $_POST['description'];
-		$price = $_POST['price'];
-		$quantity = $_POST['quantity'];
-		$pictureurl = $_POST['pictureurl'];
-		$query = "INSERT INTO products ( name, description, price, quantity, picture_url) VALUES ('".$name."', '".$description."', '".$price."', '".$quantity."', '".$pictureurl."') ";
-		if(mysqli_query($con,$query) == TRUE)
-		{
-			echo "New record created successfully.<br>";
-		}
-		else
-		{
-			echo "Error: " .$query." => ". mysqli_error($con);
-		}
-	}
-	$result = mysqli_query($con,"SELECT * FROM products");
-	echo 'All products are:<br>';
+	/*$result = mysqli_query($con,"SELECT * FROM products");
 	echo '<center><table border=1><thead><th>Name</th><th>Description</th><th>Price</th></thead>';
 	while($row = mysqli_fetch_assoc($result))
 	{
 		echo '<tr><td><center>'.$row['name'].'</center></td><td><center>'.$row['description'].'</center></td><td><center>'.$row['price'].'$</center></td></tr>';
 	}
-	echo '</table></center>';
+	echo '</table></center>';*/
 ?>
 
 <?php

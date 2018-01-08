@@ -1,0 +1,9 @@
+body
+{
+	background-image: url('lfc.png') ;
+	background-size: cover ;
+	color: #FFFFFF;
+}
+.centering {
+	text-align: center;
+}
