@@ -1,4 +1,6 @@
 <?php
+	//$Prefix = url();
+	//echo url().'<br>';
 	#Defaults
 	$index_path = "index.php";
 	$footer_path = "header_footer/footer.php";
@@ -9,6 +11,7 @@
 	
 	#Products
 	$Prefix = "";
+	#$Prefix = "products/";
 	$add_product_path = $Prefix . "add_product.php";
 	$change_product_path = $Prefix . "change_product.php";
 	$list_products_path = $Prefix . "list_products.php";
@@ -16,14 +19,14 @@
 	$delete_product_path = $Prefix . "delete_product.php";
 	
 	#Categories
-	#$Prefix = "../categories/";
+	#$Prefix = "categories/";
 	$add_category_path = $Prefix . "add_category.php";
 	$change_category_path = $Prefix . "change_category.php";
 	$list_categories_path = $Prefix . "list_categories.php";
 	$delete_category_path = $Prefix . "delete_category.php";
 
 	#User Authentication
-	#$Prefix = "../user_authentication/";
+	#$Prefix = "user_authentication/";
 	$register_path = $Prefix . "register.php";
 	$login_path = $Prefix . "login.php";
 	$logout_path = $Prefix . "logout.php";
@@ -31,17 +34,17 @@
 	$user_data_config_path = $Prefix . "user_data_config.php";
 	
 	#Users
-	#$Prefix = "../users/";
+	#$Prefix = "users/";
 	$my_profile_path = $Prefix . "my_profile.php";
 	$delete_profile_path = $Prefix . "delete_profile.php";
 	
 	#Admins
-	#$Prefix = "../admins/";
+	#$Prefix = "admins/";
 	$admin_panel_path = $Prefix . "admin_panel.php";
 	$check_admin_path = $Prefix . "check_admin.php";
 	
 	#Others
-	#$Prefix = "../others/";
+	#$Prefix = "others/";
 	$help_functions_path = $Prefix . "help_functions.php";
 	$constants_path = $Prefix . "constants.php";
 	
