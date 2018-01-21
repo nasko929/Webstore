@@ -16,7 +16,11 @@
 	<h2><?php echo $info['price']; ?>$</h2>
 	<?php
 		if($info['quantity'] != 0)
-			echo '<h2><a href="#">BUY NOW</a></h2>';
+		{
+			?>
+			<h2><p id="blink" style="cursor:hand; text-decoration: underline;">BUY NOW</p></h2>
+			<?php
+		}
 		else
 			echo "<h2>Not in stock.</h2>";
 	?>

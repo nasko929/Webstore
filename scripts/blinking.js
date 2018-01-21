@@ -1,6 +1,7 @@
 function blinktext () {
-	var f = document.getElementById('announcement');
+	var f = document.getElementById("blink");
 	setInterval(function() {
-		f.style.visibility = (f.style.visibility == 'hidden' ? '' : 'hidden');
-	}, 1000);
+		f.style.color = (f.style.color == 'white' ? 'green' : 'white');
+	}, 150);
+	
 }

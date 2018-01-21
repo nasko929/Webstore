@@ -1,8 +1,8 @@
 <?php
 	$title = "Registration";
 	require("header_footer/header.php");
-
 ?>
+
 <div class="centering">
 	<h1>Register</h1>
 	<form action="register.php" method="post" enctype="multipart/form-data">
