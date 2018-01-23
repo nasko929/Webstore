@@ -1,0 +1,1 @@
+We just made our first AJAX request! Give us money for that :)

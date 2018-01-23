@@ -2,6 +2,7 @@
 	$title = "Liverpool FC - WebStore. Lowest prices!!!";
 	require("header_footer/header.php");
 ?>
+<a href="ajax.php">Go and try AJAX</a>
 <div style = "text-align: right">
 	<?php
 		$my_profile_redirect = redirect_to_based_on_is_logged($my_profile_path,$login_path);
