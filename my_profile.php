@@ -2,6 +2,10 @@
 	$title = "My profile";
 	require("header_footer/header.php");
 	require($constants_path);
+	if(!isset($_SESSION['id']))
+	{
+		header("Location: ".$login_path);
+	}
 	$get_profile_pic = "SELECT * FROM users WHERE `users`.`id`=".$_SESSION['id'];
 	$result = mysqli_query($con,$get_profile_pic);
 	$result = mysqli_fetch_assoc($result);

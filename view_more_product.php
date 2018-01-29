@@ -39,6 +39,9 @@
 </div>
 
 
+<script src="scripts/blinking.js"></script>
+
+
 <?php
 	require($footer_path);
 ?>

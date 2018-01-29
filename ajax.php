@@ -8,39 +8,34 @@
 <p id = "tobefilled"></p>
 <script>
 
-( function()
+document.getElementById("ajaxButton").addEventListener("click",Things);
+function Things()
 {
-	var httpRequest;
-	document.getElementById("ajaxButton").addEventListener("click",makeRequest);
-	function makeRequest()
+	setInterval(function()
 	{
-		httpRequest = new XMLHttpRequest();
-
-		if (!httpRequest)
+		var httpReq = new XMLHttpRequest();
+		if(!httpReq)
 		{
-			alert('Giving up :( Cannot create an XMLHTTP instance');
-			return false;
+			alert("Cannot create XMLHttpRequest object.");
+			return;
 		}
-		httpRequest.onreadystatechange = alertContents;
-		httpRequest.open('GET', 'random.txt');
-		httpRequest.send();
-	}
-
-	function alertContents()
-	{
-		if (httpRequest.readyState === XMLHttpRequest.DONE)
+		httpReq.addEventListener("readystatechange",Main);
+		httpReq.open('GET','random.txt');
+		httpReq.send();
+		function Main()
 		{
-			if (httpRequest.status === 200)
+			//console.log(arguments);
+			if(httpReq.readyState == 4)
 			{
-				document.getElementById("tobefilled").innerHTML = httpRequest.responseText;
-			}
-			else
-			{
-				alert('There was a problem with the request.');
+				if(httpReq.status == 200)
+				{
+					document.getElementById("tobefilled").innerHTML = httpReq.response;
+				}
 			}
 		}
-	}
-})();
+
+	},150);
+}
 
 </script>
 
